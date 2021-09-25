@@ -6,16 +6,87 @@
           <div class="card-content">
             <div class="tabs">
               <ul>
+              <%# TODO: セッションのチェック、後で消す %>
+                <%= @user if @user.present? %>
+              <%# TODO: セッションのチェック、後で消す %>
                 <li class="login is-active"><a>ログイン</a></li>
                 <li class="regist"><a>新規登録</a></li>
               </ul>
             </div>
+
             <div id="login-form">
-              LoginForm
+              <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+              <div class="field">
+                <label for="login-email" class="label">メールアドレス</label>
+                <div class="control">
+                  <%= f.email_field :email, id: 'login-email', class: 'input', placeholder: 'メールアドレス' %>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="login-password" class="label">パスワード</label>
+                <div class="control">
+                  <%= f.password_field :password, id: 'login-password', class: 'input', placeholder: 'パスワード' %>
+                </div>
+              </div>
+
+              <% if devise_mapping.rememberable? %>
+              <div class="field">
+                <%= f.check_box :remember_me, class: 'checkbox' %>
+                <%= f.label :remember_me, 'ログインを維持する' %>
+              </div>
+              <% end %>
+
+              <div class="buttons">
+                <%= f.submit "ログイン", class: 'button is-primary' %>
+              </div>
+              <% end %>
+              <hr>
+              <%= link_to user_google_oauth2_omniauth_authorize_path, method: 'post' do %>
+                <%= image_tag 'btn_google_signin_dark_pressed_web@2x.png', width: '206',height: '49' %>
+              <% end %>
+              <%#= render "devise/shared/links" %>
             </div>
+
             <div id="regist-form">
-              RegistForm
+              <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
+              <%#= render "devise/shared/error_messages", resource: resource %>
+
+              <div class="field">
+                <label for="regist-email" class="label">メールアドレス</label>
+                <div class="control">
+                  <%= f.email_field :email, id: 'regist-email', class: 'input', placeholder: 'メールアドレス' %>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="regist-password" class="label">パスワード</label>
+                <div class="control">
+                  <%= f.password_field :password, id: 'regist-password', class: 'input', placeholder: 'パスワード' %>
+                  <% if @minimum_password_length %>
+                    <em>(<%= @minimum_password_length %> characters minimum)</em>
+                  <% end %>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="regist-password-confirm" class="label">パスワード(確認)</label>
+                <div class="control">
+                  <%= f.password_field :password_confirmation, id: 'regist-password-confirm', class: 'input', placeholder: 'パスワード(確認)' %>
+                </div>
+              </div>
+
+              <div class="buttons">
+                <%= f.submit "新規登録", class: 'button is-primary' %>
+              </div>
+              <% end %>
+              <hr>
+              <%= link_to user_google_oauth2_omniauth_authorize_path, method: 'post' do %>
+                <%= image_tag 'btn_google_signin_dark_pressed_web@2x.png', width: '206',height: '49' %>
+              <% end %>
+              <%#= render "devise/shared/links" %>
             </div>
+
           </div>
         </div>
       </div>
