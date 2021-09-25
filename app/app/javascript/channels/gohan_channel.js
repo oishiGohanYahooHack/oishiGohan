@@ -36,11 +36,13 @@ document.addEventListener('turbolinks:load', () => {
       }
 
   function pin(lat, lng) {
-    let width = 30;
-    let height = 30;
+    let width = 50;
+    let height = 50;
+    let randnum = Math.floor(Math.random() * 9) + 1;
     const elem = document.createElement('div');
     elem.className = 'marker';
-    elem.style.backgroundImage = 'url(/assets/gohan.png)';
+    // elem.style.backgroundImage = `url(/assets/gohans/${randnum}.png)`;
+    elem.style.backgroundImage = `url(/assets/gohan_pins/${randnum}.png)`;
     elem.style.width = `${width}px`;
     elem.style.height = `${height}px`;
     elem.style.backgroundSize = '100%';
