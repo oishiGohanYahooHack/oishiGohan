@@ -47,6 +47,21 @@ $(document).on('turbolinks:load', function() {
         loginForm.css('display', 'none')
         registForm.css('display', 'block')
     })
+  
+  	// ハンバーガーメニュー
+    var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0); //②
+
+    if ($navbarBurgers.length > 0) {
+
+      $navbarBurgers.forEach(function ($el) {
+        $el.addEventListener('click', function () { 
+          var target = $el.dataset.target;
+          var $target = document.getElementById(target);
+          $el.classList.toggle('is-active');
+          $target.classList.toggle('is-active');
+        });
+      });
+    }
 });
 
 /**
