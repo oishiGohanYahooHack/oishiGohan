@@ -14,12 +14,17 @@
  *= require_self
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Yomogi&display=swap');
+ @font-face {
+  font-family: "Yomogi";
+  src: url('/fonts/Yomogi-Regular.ttf') format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Yomogi', cursive!important;
+  font-family: 'Yomogi';
 }
 
 #login-form {
