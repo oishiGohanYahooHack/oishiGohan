@@ -48,7 +48,10 @@ document.addEventListener('turbolinks:load', () => {
         .setLngLat([lng, lat])
         .addTo(map);
 
-    startSoundEffect('assets/start.mp3')
+    let startEatSounds = new Array( "assets/start2.mp3", "assets/start3.mp3");
+    let selectNum = Math.floor(Math.random() * startEatSounds.length);
+    let output = startEatSounds[selectNum];
+    startSoundEffect(output)
     console.log('sound')
 
     setTimeout(function(){
