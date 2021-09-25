@@ -18,7 +18,7 @@
 @import "font-awesome";
 @font-face {
   font-family: "Yomogi";
-  src: url('/fonts/Yomogi-Regular.ttf') format("truetype");
+  src: image-url('/fonts/Yomogi-Regular.ttf') format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -28,6 +28,12 @@ body {
   margin: 0;
   height: 100vh;
   font-family: 'Yomogi';
+  height: 100vh;
+  background-color: rgba(255,255,255,0.8);
+  background-blend-mode: lighten;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 #login-form {
@@ -36,6 +42,54 @@ body {
 
 #regist-form {
   display: none;
+}
+
+.midnight-1 {
+  background-image: image-url("midnight/1.jpg");
+}
+
+.midnight-2 {
+  background-image: image-url("midnight/2.jpg");
+}
+
+.midnight-3 {
+  background-image: image-url("midnight/3.jpg");
+}
+
+.morning-1 {
+  background-image: image-url("morning/1.jpg");
+}
+
+.morning-2 {
+  background-image: image-url("morning/2.jpg");
+}
+
+.morning-3 {
+  background-image: image-url("morning/3.jpg");
+}
+
+.lunch-1 {
+  background-image: image-url("lunch/1.jpg");
+}
+
+.lunch-2 {
+  background-image: image-url("lunch/2.jpg");
+}
+
+.lunch-3 {
+  background-image: image-url("lunch/3.jpg");
+}
+
+.dinner-1 {
+  background-image: image-url("dinner/1.jpg");
+}
+
+.dinner-2 {
+  background-image: image-url("dinner/2.jpg");
+}
+
+.dinner-3 {
+  background-image: image-url("dinner/3.jpg");
 }
 
 // 位置コントローラー削除

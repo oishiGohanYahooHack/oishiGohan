@@ -48,6 +48,22 @@ $(document).on('turbolinks:load', function() {
         registForm.css('display', 'block')
     })
 
+    // 時間に応じてランダムに背景画像変更
+    let day = new Date();
+    let hour = day.getHours();
+
+    let randnum = Math.floor(Math.random() * 3) + 1;
+
+    if (6 < hour && hour < 11) {
+        $('body').addClass(`morning-${randnum}`);
+    } else if (hour < 16) {
+        $('body').addClass(`lunch-${randnum}`);
+    } else if (hour < 22) {
+        $('body').addClass(`dinner-${randnum}`);
+    } else {
+        $('body').addClass(`midnight-${randnum}`);
+    }
+  
     /**
      * Map
      */
