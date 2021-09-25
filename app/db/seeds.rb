@@ -9,7 +9,7 @@
 require "csv"
 
 CSV.foreach('db/seeds/csv/prefs.csv', headers: false) do |row|
-  content = Pref.create(
+  content = Pref.find_or_create_by(
     name: row[0],
     latitude: row[1],
     longitude: row[2]
@@ -17,7 +17,7 @@ CSV.foreach('db/seeds/csv/prefs.csv', headers: false) do |row|
 end
 
 CSV.foreach('db/seeds/csv/colors.csv', headers: false) do |row|
-  content = PinColor.create(
+  content = PinColor.find_or_create_by(
     name: row[0],
     color: row[1]
   )
