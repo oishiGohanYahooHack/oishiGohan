@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+@import url('https://fonts.googleapis.com/css2?family=Yomogi&display=swap');
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Yomogi', cursive!important;
+}
