@@ -15,61 +15,76 @@
             </div>
 
             <div id="login-form">
-              <h2>Log in</h2>
-
-              <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <%= form_with model: @user, url: user_session_path, local: true do |f| %>
               <div class="field">
-                <%= f.label :email %><br />
-                <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+                <label for="login-email" class="label">メールアドレス</label>
+                <div class="control">
+                  <%= f.email_field :email, id: 'login-email', class: 'input', placeholder: 'メールアドレス' %>
+                </div>
               </div>
 
               <div class="field">
-                <%= f.label :password %><br />
-                <%= f.password_field :password, autocomplete: "current-password" %>
+                <label for="login-password" class="label">パスワード</label>
+                <div class="control">
+                  <%= f.password_field :password, id: 'login-password', class: 'input', placeholder: 'パスワード' %>
+                </div>
               </div>
 
               <% if devise_mapping.rememberable? %>
               <div class="field">
-                <%= f.check_box :remember_me %>
-                <%= f.label :remember_me %>
+                <%= f.check_box :remember_me, class: 'checkbox' %>
+                <%= f.label :remember_me, 'ログインを維持する' %>
               </div>
               <% end %>
 
-              <div class="actions">
-                <%= f.submit "Log in" %>
+              <div class="buttons">
+                <%= f.submit "ログイン", class: 'button is-primary' %>
               </div>
               <% end %>
-              <%= render "devise/shared/links" %>
+              <hr>
+              <%= link_to user_google_oauth2_omniauth_authorize_path, method: 'post' do %>
+                <%= image_tag 'btn_google_signin_dark_pressed_web@2x.png', width: '206',height: '49' %>
+              <% end %>
+              <%#= render "devise/shared/links" %>
             </div>
 
             <div id="regist-form">
-              <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-              <%= render "devise/shared/error_messages", resource: resource %>
+              <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
+              <%#= render "devise/shared/error_messages", resource: resource %>
 
               <div class="field">
-                <%= f.label :email %><br />
-                <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+                <label for="regist-email" class="label">メールアドレス</label>
+                <div class="control">
+                  <%= f.email_field :email, id: 'regist-email', class: 'input', placeholder: 'メールアドレス' %>
+                </div>
               </div>
 
               <div class="field">
-                <%= f.label :password %>
-                <% if @minimum_password_length %>
-                <em>(<%= @minimum_password_length %> characters minimum)</em>
-                <% end %><br />
-                <%= f.password_field :password, autocomplete: "new-password" %>
+                <label for="regist-password" class="label">パスワード</label>
+                <div class="control">
+                  <%= f.password_field :password, id: 'regist-password', class: 'input', placeholder: 'パスワード' %>
+                  <% if @minimum_password_length %>
+                    <em>(<%= @minimum_password_length %> characters minimum)</em>
+                  <% end %>
+                </div>
               </div>
 
               <div class="field">
-                <%= f.label :password_confirmation %><br />
-                <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+                <label for="regist-password-confirm" class="label">パスワード(確認)</label>
+                <div class="control">
+                  <%= f.password_field :password_confirmation, id: 'regist-password-confirm', class: 'input', placeholder: 'パスワード(確認)' %>
+                </div>
               </div>
 
-              <div class="actions">
-                <%= f.submit "Sign up" %>
+              <div class="buttons">
+                <%= f.submit "新規登録", class: 'button is-primary' %>
               </div>
               <% end %>
-
-              <%= render "devise/shared/links" %>
+              <hr>
+              <%= link_to user_google_oauth2_omniauth_authorize_path, method: 'post' do %>
+                <%= image_tag 'btn_google_signin_dark_pressed_web@2x.png', width: '206',height: '49' %>
+              <% end %>
+              <%#= render "devise/shared/links" %>
             </div>
 
           </div>
