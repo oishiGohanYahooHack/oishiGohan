@@ -1,0 +1,120 @@
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <div class="card">
+          <div class="card-content">
+            <div class="tabs">
+              <ul>
+                <li class="login is-active"><a>ログイン</a></li>
+                <li class="regist"><a>新規登録</a></li>
+              </ul>
+            </div>
+
+            <div id="login-form">
+              <%= form_with model: User.new, url: user_session_path, local: true, method: 'post' do |f| %>
+                <% flash.each do |message_type, message| %>
+                  <div class="message is-<%= message_type %>">
+                    <div class="message-body">
+                      <%= message %>
+                    </div>
+                  </div>
+                <% end %>
+                <div class="field">
+                  <label for="login-email" class="label">メールアドレス</label>
+                  <div class="control">
+                    <%= f.email_field :email, id: 'login-email', class: 'input', placeholder: 'メールアドレス', required: 'true' %>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label for="login-password" class="label">パスワード</label>
+                  <div class="control">
+                    <%= f.password_field :password, id: 'login-password', class: 'input', placeholder: 'パスワード', required: 'true' %>
+                  </div>
+                </div>
+
+                <% if devise_mapping.rememberable? %>
+                  <div class="field">
+                    <%= f.check_box :remember_me, class: 'checkbox' %>
+                    <%= f.label :remember_me, 'ログインを維持する' %>
+                  </div>
+                <% end %>
+
+                <div class="buttons">
+                  <%= f.submit "ログイン", class: 'button is-primary' %>
+                </div>
+              <% end %>
+              <hr>
+              <%= link_to user_google_oauth2_omniauth_authorize_path, method: 'post' do %>
+                <%= image_tag 'btn_google_signin_dark_pressed_web@2x.png', width: '206', height: '49' %>
+              <% end %>
+            </div>
+
+            <div id="regist-form">
+              <%= form_with model: User.new, url: user_registration_path, local: true do |f| %>
+                <% flash.each do |message_type, message| %>
+                  <div class="message is-<%= message_type %>">
+                    <div class="message-body">
+                      <%= message %>
+                    </div>
+                  </div>
+                <% end %>
+                <div class="field">
+                  <label for="regist-email" class="label">メールアドレス</label>
+                  <div class="control">
+                    <%= f.email_field :email, id: 'regist-email', class: 'input', placeholder: 'メールアドレス', required: 'true' %>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label for="regist-password" class="label">パスワード</label>
+                  <div class="control">
+                    <%= f.password_field :password, id: 'regist-password', class: 'input', placeholder: 'パスワード', required: 'true' %>
+                    <% if @minimum_password_length %>
+                      <em>(<%= @minimum_password_length %> characters minimum)</em>
+                    <% end %>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label for="regist-password-confirm" class="label">パスワード(確認)</label>
+                  <div class="control">
+                    <%= f.password_field :password_confirmation, id: 'regist-password-confirm', class: 'input', placeholder: 'パスワード(確認)', required: 'true' %>
+                  </div>
+                </div>
+
+                <div class="buttons">
+                  <%= f.submit "新規登録", class: 'button is-primary' %>
+                </div>
+              <% end %>
+              <hr>
+              <%= link_to user_google_oauth2_omniauth_authorize_path, method: 'post' do %>
+                <%= image_tag 'btn_google_signin_dark_pressed_web@2x.png', width: '206', height: '49' %>
+              <% end %>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="card">
+          <div class="card-content">
+            <div class="content">
+              <h2 class="title is-5">おいしいご飯パワーとは？</h2>
+              <p>
+                1人で食事をすると寂しさがありますよね。
+              </p>
+              <p>
+                いただきます。ごちそうさまでした。
+              </p>
+              <p>
+                そんなときに、呟くとリアルタイムで、日本地図にポップアップが出て一緒に食べてる感覚がするサイトです。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

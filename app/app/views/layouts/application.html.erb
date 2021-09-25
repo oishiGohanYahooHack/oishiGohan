@@ -1,15 +1,129 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>oishiGohan</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
-  </head>
 
-  <body>
-    <%= yield %>
-  </body>
+<head>
+  <title>oishiGohan</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <script src='//api.tiles.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.js'></script>
+  <link href='//api.tiles.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.css' rel='stylesheet' />
+  <script src='//api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-language/v1.0.0/mapbox-gl-language.js'></script>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+
+  <meta name="msapplication-square70x70logo" content="/site-tile-70x70.png">
+  <meta name="msapplication-square150x150logo" content="/site-tile-150x150.png">
+  <meta name="msapplication-wide310x150logo" content="/site-tile-310x150.png">
+  <meta name="msapplication-square310x310logo" content="/site-tile-310x310.png">
+  <meta name="msapplication-TileColor" content="#0078d7">
+  <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="/favicon.ico">
+  <link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="36x36" href="/android-chrome-36x36.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/android-chrome-48x48.png">
+  <link rel="icon" type="image/png" sizes="72x72" href="/android-chrome-72x72.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/android-chrome-96x96.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="/android-chrome-128x128.png">
+  <link rel="icon" type="image/png" sizes="144x144" href="/android-chrome-144x144.png">
+  <link rel="icon" type="image/png" sizes="152x152" href="/android-chrome-152x152.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="256x256" href="/android-chrome-256x256.png">
+  <link rel="icon" type="image/png" sizes="384x384" href="/android-chrome-384x384.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+  <link rel="icon" type="image/png" sizes="36x36" href="/icon-36x36.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/icon-48x48.png">
+  <link rel="icon" type="image/png" sizes="72x72" href="/icon-72x72.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/icon-96x96.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="/icon-128x128.png">
+  <link rel="icon" type="image/png" sizes="144x144" href="/icon-144x144.png">
+  <link rel="icon" type="image/png" sizes="152x152" href="/icon-152x152.png">
+  <link rel="icon" type="image/png" sizes="160x160" href="/icon-160x160.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="196x196" href="/icon-196x196.png">
+  <link rel="icon" type="image/png" sizes="256x256" href="/icon-256x256.png">
+  <link rel="icon" type="image/png" sizes="384x384" href="/icon-384x384.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/icon-512x512.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/icon-16x16.png">
+  <link rel="icon" type="image/png" sizes="24x24" href="/icon-24x24.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icon-32x32.png">
+  <link rel="manifest" href="/manifest.json">
+</head>
+<nav class="navbar is-primary is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://bulma.io">
+      <h1 class="title is-5 has-text-white">おいしいご飯パワー</h1>
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+
+    <% if user_signed_in? %>
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <span class="button is-info user-setting-button">設定</span>
+        </div>
+      </div>
+    </div>
+    <div class="navbar-item">
+      <div class="buttons">
+        <%= link_to 'ろぐあうと', destroy_user_session_path, method: :delete, class: "button is-info" %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  </div>
+</nav>
+
+<body>
+  <%= yield %>
+
+  <% if user_signed_in? %>
+  <div class="modal modal-user-setting">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">設定</p>
+        <button class="delete close-user-setting-button" aria-label="close"></button>
+      </header>
+
+      <%= form_with model: current_user, url: user_path(current_user.id),  local: true do |f| %>
+      <section class="modal-card-body">
+        <div>
+          <div class="field">
+            <label class="label">名前</label>
+            <div class="control">
+              <%= f.text_field :nickname, class: 'input', placeholder: '名前' %>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="modal-card-foot">
+        <button class="button is-success close-user-setting-button">保存</button>
+      </footer>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+
+
+
+</body>
+
 </html>
