@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   }
 
   resources :maps
-  root 'users#index'
-  # root to: 'home#index'
+  resources :users, only: [:update]
+  root to: 'home#index'
 end

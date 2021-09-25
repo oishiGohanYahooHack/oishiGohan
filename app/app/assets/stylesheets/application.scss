@@ -14,15 +14,20 @@
  *= require_self
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Yomogi&display=swap');
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@font-face {
+  font-family: "Yomogi";
+  src: url('/fonts/Yomogi-Regular.ttf') format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 
 body {
   padding: 56px 0 0;
   margin: 0;
   height: 100vh;
-  font-family: 'Yomogi', cursive!important;
+  font-family: 'Yomogi';
 }
 
 #login-form {
@@ -45,4 +50,11 @@ body {
   right: 2rem;
   bottom: 3rem;
   border-radius: 50%;
+}
+.modal-card {
+  padding: 0 20px;
+}
+
+.button.is-info {
+  background-color: #3e8ed0d1;
 }

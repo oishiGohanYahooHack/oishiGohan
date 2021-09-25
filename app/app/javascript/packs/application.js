@@ -58,4 +58,17 @@ $(document).on('turbolinks:load', function() {
             trackUserLocation: true,
             showUserHeading: true
         }))
-})
+    // ユーザー設定のモーダル
+    let userSettingButton = $('.user-setting-button')
+    let userSettingModal = $('.modal-user-setting')
+    let closeUserSettingButton = $('.close-user-setting-button')
+
+
+    userSettingButton.click(function () {
+        userSettingModal.addClass('is-active')
+    })
+    closeUserSettingButton.click(function () {
+        userSettingModal.removeClass('is-active')
+    })
+
+});
