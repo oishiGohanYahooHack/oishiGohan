@@ -24,10 +24,32 @@ document.addEventListener('turbolinks:load', () => {
         showUserHeading: true
       }))
 
+  //マーカー押下時のサウンド
+  const soundEffect = new Audio()
+  function startSoundEffect(src) {
+          // エフェクト音
+          soundEffect.preload = 'auto'
+          soundEffect.src = src
+          soundEffect.load()
+          soundEffect.currentTime = 0;
+          soundEffect.play()
+      }
+
   function pin(lat, lng) {
-    const marker = new mapboxgl.Marker()
+    let width = 30;
+    let height = 30;
+    const elem = document.createElement('div');
+    elem.className = 'marker';
+    elem.style.backgroundImage = 'url(/assets/gohan.png)';
+    elem.style.width = `${width}px`;
+    elem.style.height = `${height}px`;
+    elem.style.backgroundSize = '100%';
+    const marker = new mapboxgl.Marker(elem)
         .setLngLat([lng, lat])
         .addTo(map);
+
+    startSoundEffect('assets/start.mp3')
+    console.log('sound')
 
     setTimeout(function(){
       marker.remove();
@@ -52,6 +74,7 @@ document.addEventListener('turbolinks:load', () => {
       pin(lat, lng)
     }
   })
+
 })
 
 

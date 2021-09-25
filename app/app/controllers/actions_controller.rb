@@ -11,8 +11,8 @@ class ActionsController < ApplicationController
     rand_seed_lat = random.rand(200) - 100
     rand_seed_lng = random.rand(200) - 100
 
-    lat = params[:lat].to_f - rand_seed_lat * 0.01
-    lng = params[:lng].to_f - rand_seed_lng * 0.01
+    lat = params[:lat].to_f - rand_seed_lat * 0.002
+    lng = params[:lng].to_f - rand_seed_lng * 0.002
 
     ActionCable.server.broadcast 'gohan_channel', params: { lat: lat, lng: lng }
 
