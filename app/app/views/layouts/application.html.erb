@@ -122,23 +122,36 @@
 <body>
   <%= yield %>
 
-  <%# TODO: ログイン後のページに行くかも %>
+  <% if user_signed_in? %>
   <div class="modal modal-user-setting">
     <div class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title">Modal title</p>
+        <p class="modal-card-title">設定</p>
         <button class="delete close-user-setting-button" aria-label="close"></button>
       </header>
+
+      <%= form_with model: current_user, url: user_path(current_user.id),  local: true do |f| %>
       <section class="modal-card-body">
-        <!-- Content ... -->aaaa
+        <div>
+          <div class="field">
+            <label class="label">名前</label>
+            <div class="control">
+              <%= f.text_field :nickname, class: 'input', placeholder: '名前' %>
+            </div>
+          </div>
+        </div>
       </section>
+
       <footer class="modal-card-foot">
-        <button class="button is-success">Save changes</button>
-        <button class="button">Cancel</button>
+        <button class="button is-success close-user-setting-button">保存</button>
       </footer>
+      <% end %>
     </div>
   </div>
+  <% end %>
+
+
 
 </body>
 
