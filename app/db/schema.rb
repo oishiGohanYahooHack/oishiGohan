@@ -15,6 +15,37 @@ ActiveRecord::Schema.define(version: 2021_09_25_051348) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "actions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "pref_id"
+    t.bigint "pin_color_id", null: false
+    t.decimal "latitude", precision: 28, scale: 25
+    t.decimal "longitude", precision: 28, scale: 25
+    t.datetime "start_at", null: false
+    t.datetime "end_at"
+    t.boolean "auto_close", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["pin_color_id"], name: "index_actions_on_pin_color_id"
+    t.index ["pref_id"], name: "index_actions_on_pref_id"
+    t.index ["user_id"], name: "index_actions_on_user_id"
+  end
+
+  create_table "pin_colors", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "color", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "prefs", force: :cascade do |t|
+    t.string "name", null: false
+    t.decimal "latitude", precision: 28, scale: 25, null: false
+    t.decimal "longitude", precision: 28, scale: 25, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "nickname", default: "ななしさん", null: false
     t.string "provider"
@@ -30,4 +61,7 @@ ActiveRecord::Schema.define(version: 2021_09_25_051348) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "actions", "pin_colors"
+  add_foreign_key "actions", "prefs"
+  add_foreign_key "actions", "users"
 end
