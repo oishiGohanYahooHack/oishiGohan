@@ -35,4 +35,26 @@ $(document).on('turbolinks:load', function() {
         loginForm.css('display', 'none')
         registForm.css('display', 'block')
     })
-});
+
+    /**
+     * Map
+     */
+    mapboxgl.accessToken = process.env.MAPBOX_API_KEY
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        defaultLanguage: 'ja',
+        center: [139.745451, 35.658577],
+        minZoom: 2,
+        maxZoom: 6,
+        zoom: 4
+    })
+    map.addControl(
+        new mapboxgl.GeolocateControl({
+            positionOptions: {
+                enableHighAccuracy: false
+            },
+            trackUserLocation: true,
+            showUserHeading: true
+        }))
+})
