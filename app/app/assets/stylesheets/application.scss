@@ -14,7 +14,9 @@
  *= require_self
  */
 
- @font-face {
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@font-face {
   font-family: "Yomogi";
   src: image-url('/fonts/Yomogi-Regular.ttf') format("truetype");
   font-weight: normal;
@@ -22,8 +24,9 @@
 }
 
 body {
-  padding: 0;
+  padding: 56px 0 0;
   margin: 0;
+  height: 100vh;
   font-family: 'Yomogi';
   height: 100vh;
   background-color: rgba(255,255,255,0.8);
@@ -87,4 +90,32 @@ body {
 
 .dinner-3 {
   background-image: image-url("dinner/3.jpg");
+}
+
+// 位置コントローラー削除
+.mapboxgl-ctrl {
+  display: none!important;
+}
+
+.meal-btn {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  right: 2rem;
+  bottom: 3rem;
+  border-radius: 50%;
+}
+.modal-card {
+  padding: 0 20px;
+}
+
+.button.is-info {
+  background-color: #3e8ed0d1;
+}
+
+
+.ita-button {
+  position: absolute;
+  bottom: 3rem;
+  right: 18rem;
 }
