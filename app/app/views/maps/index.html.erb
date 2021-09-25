@@ -2,3 +2,7 @@
 <button class='meal-btn'>
     <%= icon('fas', 'praying-hands')%>
 </button>
+
+<div class=ita-button>
+  <%= button_to 'いただきます', actions_path({pref: '', lng: '135.123', lat: '35.123', pin_color_id: 3}), {method: :create} %>
+</div>
