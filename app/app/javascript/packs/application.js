@@ -47,12 +47,27 @@ $(document).on('turbolinks:load', function() {
         loginForm.css('display', 'none')
         registForm.css('display', 'block')
     })
-  
-  	// ハンバーガーメニュー
-    var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0); //②
+
+    /**
+     * ユーザーモーダル
+     */
+    let userSettingButton = $('.user-setting-button')
+    let userSettingModal = $('.modal-user-setting')
+    let closeUserSettingButton = $('.close-user-setting-button')
+
+    userSettingButton.click(function () {
+        userSettingModal.addClass('is-active')
+    })
+    closeUserSettingButton.click(function () {
+        userSettingModal.removeClass('is-active')
+    })
+
+    /**
+     * ハンバーガーメニュー
+     */
+    let $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0); //②
 
     if ($navbarBurgers.length > 0) {
-
       $navbarBurgers.forEach(function ($el) {
         $el.addEventListener('click', function () { 
           var target = $el.dataset.target;
