@@ -67,7 +67,7 @@ $(document).on('turbolinks:load', function() {
     /**
      * Map
      */
-    mapboxgl.accessToken = process.env.MAPBOX_API_KEY
+    mapboxgl.accessToken = 'pk.eyJ1Ijoib2lzaGktZ29oYW4iLCJhIjoiY2t0eTJpdHBoMnltaTJwbzIydzYwaGZnZCJ9.huyeJH0eaXmtCL7a4klCOw'
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11',
