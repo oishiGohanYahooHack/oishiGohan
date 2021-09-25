@@ -3,6 +3,6 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'omniauth_callbacks'
   }
   
-  root 'users#index'
-  # root to: 'home#index'
+  # root 'users#index'
+  root to: 'home#index'
 end
