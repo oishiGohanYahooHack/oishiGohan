@@ -1,0 +1,2 @@
+class PinColor < ApplicationRecord
+end
