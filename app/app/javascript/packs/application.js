@@ -35,4 +35,18 @@ $(document).on('turbolinks:load', function() {
         loginForm.css('display', 'none')
         registForm.css('display', 'block')
     })
+
+    // ユーザー設定のモーダル
+    let userSettingButton = $('.user-setting-button')
+    let userSettingModal = $('.modal-user-setting')
+    let closeUserSettingButton = $('.close-user-setting-button')
+
+
+    userSettingButton.click(function () {
+        userSettingModal.addClass('is-active')
+    })
+    closeUserSettingButton.click(function () {
+        userSettingModal.removeClass('is-active')
+    })
+
 });
