@@ -36,7 +36,15 @@ document.addEventListener('turbolinks:load', () => {
       }
 
   function pin(lat, lng) {
-    const marker = new mapboxgl.Marker()
+    let width = 30;
+    let height = 30;
+    const elem = document.createElement('div');
+    elem.className = 'marker';
+    elem.style.backgroundImage = 'url(/assets/gohan.png)';
+    elem.style.width = `${width}px`;
+    elem.style.height = `${height}px`;
+    elem.style.backgroundSize = '100%';
+    const marker = new mapboxgl.Marker(elem)
         .setLngLat([lng, lat])
         .addTo(map);
 
