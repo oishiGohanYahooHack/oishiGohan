@@ -25,15 +25,19 @@ document.addEventListener('turbolinks:load', () => {
       }))
 
   function pin(lat, lng) {
-    const marker1 = new mapboxgl.Marker()
+    const marker = new mapboxgl.Marker()
         .setLngLat([lng, lat])
         .addTo(map);
+
+    setTimeout(function(){
+      marker.remove();
+    }, 5000);
   }
 
   consumer.subscriptions.create("GohanChannel", {
     connected() {
       // Called when the subscription is ready for use on the server
-      console.log('test')
+      // console.log('test')
       // pin(35.658577, 139.745451)
     },
 
@@ -43,7 +47,9 @@ document.addEventListener('turbolinks:load', () => {
 
     received(data) {
       // Called when there's incoming data on the websocket for this channel
-      console.log(data)
+      let lat = data['params']['lat']
+      let lng = data['params']['lng']
+      pin(lat, lng)
     }
   })
 })
