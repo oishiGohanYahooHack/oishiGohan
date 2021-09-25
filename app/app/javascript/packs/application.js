@@ -43,13 +43,14 @@ $(document).on('turbolinks:load', function() {
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11',
-        defaultLanguage: 'ja',
         center: [139.745451, 35.658577],
         minZoom: 2,
         maxZoom: 6,
         zoom: 4
-    })
-    map.addControl(
+    }).addControl(
+        new MapboxLanguage({
+            defaultLanguage: 'ja'
+    })).addControl(
         new mapboxgl.GeolocateControl({
             positionOptions: {
                 enableHighAccuracy: false
