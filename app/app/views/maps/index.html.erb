@@ -1,8 +1,29 @@
 <div id="map" style="width: 100vw; height: 100%;"></div>
-<button class='meal-btn'>
+<button class='meal-btn', onclick='hoge()'>
     <%= icon('fas', 'praying-hands')%>
 </button>
 
 <div class=ita-button>
   <%= button_to 'いただきます', actions_path({pref: '', lng: '135.123', lat: '35.123', pin_color_id: 3}), {method: :create} %>
 </div>
+
+<script type=text/javascript>
+    function hoge() {
+        navigator.geolocation.getCurrentPosition( position => {
+            let lng = position.coords.longitude;
+            let lat = position.coords.latitude;
+            $.ajax({
+              url: '/actions',
+              type: 'POST',
+              data: {
+                'pref_id': '1',
+                'lat': lat,
+                'lng': lng
+              },
+              headers: {
+                'X-CSRF-Token' : $('meta[name="csrf-token"]').attr('content')
+              }
+            });
+        }, err => { console.log(err.message) });
+    }
+</script>
