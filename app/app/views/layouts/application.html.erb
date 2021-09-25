@@ -54,18 +54,17 @@
         </div>
       </div>
 
+
+    <% if user_signed_in? %>
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <a class="button is-primary">
-              <strong>Sign up</strong>
-            </a>
-            <a class="button is-light">
-              Log in
-            </a>
+            <%= link_to 'ろぐあうと', destroy_user_session_path, method: :delete, class: "button is-light" %></li>
           </div>
         </div>
       </div>
+    <% end %>
+
     </div>
   </nav>
   <body>
