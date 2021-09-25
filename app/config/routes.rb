@@ -4,9 +4,8 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     omniauth_callbacks: 'omniauth_callbacks'
   }
-
+  resources :actions
+  resources :maps
   resources :users, only: [:update]
-  
-  # root 'users#index'
   root to: 'home#index'
 end

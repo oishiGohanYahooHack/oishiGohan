@@ -49,8 +49,28 @@ $(document).on('turbolinks:load', function() {
     })
 
     /**
-     * ユーザーモーダル
+     * Map
      */
+    mapboxgl.accessToken = process.env.MAPBOX_API_KEY
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [139.745451, 35.658577],
+        minZoom: 2,
+        maxZoom: 6,
+        zoom: 4
+    }).addControl(
+        new MapboxLanguage({
+            defaultLanguage: 'ja'
+    })).addControl(
+        new mapboxgl.GeolocateControl({
+            positionOptions: {
+                enableHighAccuracy: false
+            },
+            trackUserLocation: true,
+            showUserHeading: true
+        }))
+    // ユーザー設定のモーダル
     let userSettingButton = $('.user-setting-button')
     let userSettingModal = $('.modal-user-setting')
     let closeUserSettingButton = $('.close-user-setting-button')
@@ -61,7 +81,6 @@ $(document).on('turbolinks:load', function() {
     closeUserSettingButton.click(function () {
         userSettingModal.removeClass('is-active')
     })
-
     /**
      * ハンバーガーメニュー
      */
