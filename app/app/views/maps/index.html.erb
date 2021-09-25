@@ -1,14 +1,10 @@
 <div id="map" style="width: 100vw; height: 100%;"></div>
-<button class='meal-btn', onclick='hoge()'>
+<button class='meal-btn', onclick='itadakimasu()'>
   <%= icon('fas', 'praying-hands')%>
 </button>
 
-<div class=ita-button>
-  <%= button_to 'いただきます', actions_path({pref: '', lng: '135.123', lat: '35.123', pin_color_id: 3}), {method: :create} %>
-</div>
-
 <script type=text/javascript>
-    function hoge() {
+    function itadakimasu() {
         navigator.geolocation.getCurrentPosition( position => {
             let lng = position.coords.longitude;
             let lat = position.coords.latitude;
@@ -16,7 +12,7 @@
                 url: '/actions',
                 type: 'POST',
                 data: {
-                    'pref_id': '1',
+                    'pref_id': '13',
                     'lat': lat,
                     'lng': lng
                 },
