@@ -1,8 +1,52 @@
-# おいしいご飯パワー
+<img src="/Readme_assets/top_img.png" alt="ログインページ">
+<img src="/Readme_assets/map_img.png" alt="マップ">
 
-## 概要
-ご飯を1人で食べるととても寂しさがある。  
-いただきます。ごちそうさまでしたを呟くと日本地図にポップアップが出て一緒に食べてる感覚がするWebアプリ
+<h2 align="center">美味しいご飯パワー</h2>
+<h3 align="center">Frontend</h3>
+
+## :mortar_board: Overview
+リアルタイムでご飯を食べている人を表示させるアプリケーション
+For [Yahoo!JAPAN DigitalHackDay]("https://hackday.yahoo.co.jp/")
+
+発表シーンは[こちら]("https://youtu.be/D04R7zEfDG0?t=6495")
+
+## :chart_with_upwards_trend: Purpose
+- コロナ禍でのひとりご飯の孤独感をなくすため
+- 日本のデジタル化を楽しく推進するため
+
+## :pencil2: Description
+- リアルタイムにご飯を食べている人を表示  
+- Google認証
+- 時間によって表示するご飯の背景を変更
+- GPSによる位置の取得+現在位置の特定を避けるランダム化
+- Mapbox APIの利用
+
+## :skull: App URL
+
+**heorkuのURLを載せる予定** 
+　
+## 💬 Usage
+
+### 1.リアルタイムにご飯を食べている人を表示  
+アプリのいただきますボタンを押すと、日本地図上にご飯マークが表示されます。自分の他にも表示されているご飯マークを見ることで、他に一緒に食事をしている誰かを感じることができます。 
+
+### 2.Google認証
+GCPを利用して、Googleのアカウントを使用して登録も可能です。
+
+### 3.時間によって表示するご飯の背景を変更
+アプリの背景をリアルな自国に基づいて変更するように工夫しました。朝ごはん・昼ごはん・夕ご飯の違いを意識しています。
+
+### 4.GPSによる位置の取得+現在位置の特定を避けるランダム化
+GPSを利用して、食事をしている人の位置を取得しています。同時に、セキュリティやプライバシーの観点から、ある程度位置をランダム化して個人情報の特定を防いでいます。
+
+### 5.Mapbox APIの利用
+ハッカソンのために提供いただいたMapboxさんのAPIを使用しております。
+https://docs.mapbox.com/api/overview/
+
+
+<br><br>
+
+## 🔧 Setting
 
 * Ruby version
     * ruby-2.7.3
