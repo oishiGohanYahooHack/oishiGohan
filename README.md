@@ -2,7 +2,6 @@
 <img src="/Readme_assets/map_img.png" alt="マップ">
 
 <h2 align="center">美味しいご飯パワー</h2>
-<h3 align="center">Frontend</h3>
 
 ## :mortar_board: Overview
 リアルタイムでご飯を食べている人を表示させるアプリケーション
@@ -74,7 +73,7 @@ DATABASE_PASSWORD=password
 REDIS_URL=redis://redis:6379/1
 ```
 
-## 起動
+## 🍙 Start
 
 自動的にPostgresSQL/Redisなども起動します。  
 初回起動時は、`docker-compose up`後にデータベース/テーブル作成を先に実施して`docker-compose`を再起動してください。
